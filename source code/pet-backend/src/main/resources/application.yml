@@ -2,10 +2,12 @@ server:
   port: 9311
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/DB_Pet?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
-    username: root
-    password: syt23333
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:/tmp/db_pet.sqlite
+  jpa:
+      hibernate:
+        ddl-auto: none
+      show-sql: true
   servlet:
     multipart:
       max-file-size: 2048MB
@@ -16,3 +18,4 @@ mybatis:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

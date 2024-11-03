@@ -1,9 +1,9 @@
 <template>
   <div>
     <div style="margin: 10px 0">
-      <el-input style="width: 200px" size="large"  placeholder="请输入名称" suffix-icon="iconfont icon-r-find" v-model="username"></el-input>
-      <el-input style="width: 200px" size="large"  placeholder="请输入邮箱" suffix-icon="el-icon-message" class="ml-5" v-model="email"></el-input>
-      <el-input style="width: 200px" size="large"  placeholder="请输入地址" suffix-icon="el-icon-position" class="ml-5" v-model="address"></el-input>
+      <el-input style="width: 200px" size="large"  placeholder="enter name" suffix-icon="iconfont icon-r-find" v-model="username"></el-input>
+      <el-input style="width: 200px" size="large"  placeholder="enter email" suffix-icon="el-icon-message" class="ml-5" v-model="email"></el-input>
+      <el-input style="width: 200px" size="large"  placeholder="enter address" suffix-icon="el-icon-position" class="ml-5" v-model="address"></el-input>
     </div>
 
     <div style="margin: 10px 0">

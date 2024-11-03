@@ -15,11 +15,13 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedOrigin("https://pets-rescueadoption-platform.netlify.app");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.setMaxAge(MAX_AGE);
+        corsConfiguration.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", corsConfiguration);
+
         return new CorsFilter(source);
     }
 }

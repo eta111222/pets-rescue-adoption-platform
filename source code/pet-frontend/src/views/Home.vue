@@ -1,7 +1,7 @@
 <template>
   <div style="color: #666;font-size: 14px;">
     <div style="padding-bottom: 20px">
-      <b>您好！{{ user.nickname }}</b>
+      <b>Hello！{{ user.nickname }}</b>
     </div>
 
     <div style="margin-bottom: 60px">
