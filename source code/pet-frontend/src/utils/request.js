@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from "@/router";
 
 const request = axios.create({
-    baseURL: 'http://localhost:9311',
+    baseURL: 'https://pet-rescue-adoption-platform-c8bf9235895b.herokuapp.com/',
     timeout: 5000
 })
 
