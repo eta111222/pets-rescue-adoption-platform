@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         currentPathName: '',
-        baseApi: 'http://localhost:9311'
+        baseApi: 'https://pet-rescue-adoption-platform-c8bf9235895b.herokuapp.com/'
     },
     mutations: {
         setPath (state) {
