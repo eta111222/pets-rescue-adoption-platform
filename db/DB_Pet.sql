@@ -11,7 +11,6 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 10/01/2024 14:16:53
 */
 
 SET NAMES utf8mb4;
@@ -23,12 +22,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标题',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '时间',
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面',
-  `num` int DEFAULT '0' COMMENT '报名人数',
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地址',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'name',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'content',
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'time',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'img',
+  `num` int DEFAULT '0' COMMENT 'num',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'address',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -36,7 +35,9 @@ CREATE TABLE `activity` (
 -- Records of activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `activity` VALUES (6, '爱宠活动 | 共享快乐时光', '亲爱的狗狗爱好者们，我们诚挚邀请您参加我们举办的【欢乐狗狗嘉年华】活动！这将是一场充满乐趣和欢笑的聚会，让您的狗狗们度过一个难忘的时光。\n\n活动当天，您的狗狗将与众多可爱的小伙伴一起参加各类游戏和挑战。我们将设立专业游戏区域，供狗狗们展示智力、灵敏度和协作能力。还有缤纷的美食摊位，提供各种对狗狗友好的美食。\n\n此外，我们准备了精彩的表演节目，包括狗狗才艺秀、时尚模特走秀等等。您将有机会展示您和狗狗的默契和特殊技能。\n\n无论是参与游戏、观看表演，还是与其他狗狗爱好者进行交流和分享，这一天都将充满欢乐和友情。我们相信，通过这次活动，您和您的狗狗将建立更深厚的情感纽带，同时也会结识到更多热爱狗狗的朋友。\n\n让我们一起加入【欢乐狗狗嘉年华】，共享快乐时光，为我们可爱的伙伴们创造美好的回忆吧！', '2023-12-04 13:05:34', '/file/8efa20e95cbe40c59ec804531a21ebc5.jpg', 15, '北京市海淀区大海湖');
+INSERT INTO `activity` VALUES (6, 'Caring Pets | Share the Moment',
+'Dear dog lovers, we warmly invite you to join our Joyful Dog Carnival! This will be an event filled with fun and laughter, where your dogs can enjoy an unforgettable time.\n\nOn the day of the event, your dogs will join many adorable friends in a variety of games and challenges. We’ll have a dedicated play area where dogs can showcase their intelligence, agility, and teamwork. There will also be vibrant food stalls offering a range of dog-friendly treats.\n\nIn addition, we have prepared fantastic performances, including dog talent shows and fashion runway shows. You’ll have the chance to demonstrate the unique bond and special skills you share with your dog.\n\nThis day will be full of joy and friendship. We believe that through this event, you and your dog will strengthen your bond and meet many more people who love dogs.',
+'2024-06-04 13:05:34', '/file/8efa20e95cbe40c59ec804531a21ebc5.jpg', 15, 'NYC USA');
 COMMIT;
 
 -- ----------------------------
@@ -45,8 +46,8 @@ COMMIT;
 DROP TABLE IF EXISTS `adopt`;
 CREATE TABLE `adopt` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `animal_id` int NOT NULL COMMENT '流浪动物id',
-  `adopt_status` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL COMMENT '领养状态',
+  `animal_id` int NOT NULL COMMENT 'stray animal id',
+  `adopt_status` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL COMMENT 'adoption status',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -62,18 +63,18 @@ COMMIT;
 DROP TABLE IF EXISTS `animal`;
 CREATE TABLE `animal` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '动物名字',
-  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '动物性别',
-  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '种类',
-  `age` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '年龄',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '动物照片',
-  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '活动范围',
-  `status` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '身体状态',
-  `sterilization` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '是否绝育',
-  `vaccine` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '疫苗接种',
-  `adopt` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '领养状态',
-  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '其他描述',
-  `is_adopt` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '是否被领养',
+  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'nickname',
+  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'sex',
+  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'type',
+  `age` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'age',
+  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'img',
+  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'address',
+  `status` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'status',
+  `sterilization` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'sterilization',
+  `vaccine` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'vaccine',
+  `adopt` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'adopt',
+  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'information',
+  `is_adopt` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'isAdopt',
   `praise` int DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
@@ -82,11 +83,12 @@ CREATE TABLE `animal` (
 -- Records of animal
 -- ----------------------------
 BEGIN;
-INSERT INTO `animal` VALUES (1, '猫咪', '公', '猫', '2周岁', '/file/933d720ff1a34d338f1129a51554337c.png', '室内', '良好', '是', '已接种', '可领养', '性格温顺', '否', 1);
-INSERT INTO `animal` VALUES (2, '柴犬', '公', '狗', '12个月', '/file/4df52f51f9dc42179181d6ce2d5f312c.jpg', '室外、室内', '健康', '否', '未接种', '不可领养', '可爱的柴犬', '是', 2);
-INSERT INTO `animal` VALUES (3, '呆狗哈士奇', '公', '哈士奇', '12个月', '/file/44b86dcc15e84babb2e949ccb54af193.jpg', '室内、室外', '健康', '否', '已接种', '可领养', '有点傻', '否', 0);
-INSERT INTO `animal` VALUES (4, '胖胖蓝猫', '母', '英国短毛猫', '6个月', '/file/76722e96859c4f3e843e506598acf65c.jpg', '室内', '健康', '否', '已接种', '可领养', '可爱小幼猫', '否', 0);
+INSERT INTO `animal` VALUES (1, 'Cat', 'Male', 'Cat', '2 years', '/file/933d720ff1a34d338f1129a51554337c.png', 'Indoor', 'Good', 'Yes', 'Vaccinated', 'Available for Adoption', 'Gentle temperament', 'No', 1);
+INSERT INTO `animal` VALUES (2, 'Shiba Inu', 'Male', 'Dog', '12 months', '/file/4df52f51f9dc42179181d6ce2d5f312c.jpg', 'Outdoor, Indoor', 'Healthy', 'No', 'Not Vaccinated', 'Not Available for Adoption', 'Adorable Shiba Inu', 'Yes', 2);
+INSERT INTO `animal` VALUES (3, 'Silly Husky', 'Male', 'Husky', '12 months', '/file/44b86dcc15e84babb2e949ccb54af193.jpg', 'Indoor, Outdoor', 'Healthy', 'No', 'Vaccinated', 'Available for Adoption', 'A bit silly', 'No', 0);
+INSERT INTO `animal` VALUES (4, 'Chubby British Shorthair', 'Female', 'British Shorthair', '6 months', '/file/76722e96859c4f3e843e506598acf65c.jpg', 'Indoor', 'Healthy', 'No', 'Vaccinated', 'Available for Adoption', 'Cute little kitten', 'No', 0);
 COMMIT;
+
 
 -- ----------------------------
 -- Table structure for applcation
@@ -94,20 +96,20 @@ COMMIT;
 DROP TABLE IF EXISTS `applcation`;
 CREATE TABLE `applcation` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '姓名',
-  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '性别',
-  `age` int DEFAULT NULL COMMENT '年龄',
-  `experience` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '养宠经验',
-  `pet` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '宠物',
-  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系方式',
-  `married` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '婚姻',
-  `income` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '收入',
-  `profession` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '职业',
-  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '住址',
-  `reason` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '领养理由',
-  `state` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT '待审核' COMMENT '状态',
-  `animal_id` int DEFAULT NULL COMMENT '动物id',
-  `user_id` int DEFAULT NULL COMMENT '用户id',
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'name',
+  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'sex',
+  `age` int DEFAULT NULL COMMENT 'age',
+  `experience` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'experience',
+  `pet` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'pet',
+  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'phone',
+  `married` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'married',
+  `income` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'income',
+  `profession` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'profession',
+  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'address',
+  `reason` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'reason',
+  `state` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT 'under review' COMMENT 'state',
+  `animal_id` int DEFAULT NULL COMMENT 'animalId',
+  `user_id` int DEFAULT NULL COMMENT 'userId',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -115,8 +117,8 @@ CREATE TABLE `applcation` (
 -- Records of applcation
 -- ----------------------------
 BEGIN;
-INSERT INTO `applcation` VALUES (1, '张胜', '男', 29, '无经验', NULL, '15877777777', '未婚', '5000+', '程序员', '广州', '喜欢', '审核不通过', 2, 2);
-INSERT INTO `applcation` VALUES (2, '王二', '男', 29, '有经验', NULL, '15877777777', '已婚', '9000+', '私企员工', '广州', '喜欢', '审核通过', 2, 3);
+INSERT INTO `applcation` VALUES (1, 'Zhang Sheng', 'Male', 29, 'No experience', NULL, '15877777777', 'Single', '5000+', 'Programmer', 'Guangzhou', 'Likes', 'Review Failed', 2, 2);
+INSERT INTO `applcation` VALUES (2, 'Wang Er', 'Male', 29, 'Experienced', NULL, '15877777777', 'Married', '9000+', 'Private Sector Employee', 'Guangzhou', 'Likes', 'Review Passed', 2, 3);
 COMMIT;
 
 -- ----------------------------
@@ -137,7 +139,7 @@ CREATE TABLE `article` (
 -- Records of article
 -- ----------------------------
 BEGIN;
-INSERT INTO `article` VALUES (8, '来看看我家狗狗可爱嘛', '![01.jpg](http://localhost:9311/file/dd2cfa5daa7a4ca2b82593d21a31b655.jpg)', 1, '2023-11-25 23:11:31', '管理员');
+INSERT INTO `article` VALUES (8, 'Come see how cute my dog is', '![01.jpg](http://localhost:9311/file/dd2cfa5daa7a4ca2b82593d21a31b655.jpg)', 1, '2023-11-25 23:11:31', 'Admin');
 COMMIT;
 
 -- ----------------------------
@@ -146,11 +148,11 @@ COMMIT;
 DROP TABLE IF EXISTS `article_kp`;
 CREATE TABLE `article_kp` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标题',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '时间',
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面',
-  `read1` int DEFAULT '0' COMMENT '阅读数',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'name',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'content',
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'time',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'img',
+  `read1` int DEFAULT '0' COMMENT 'read1',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -158,8 +160,11 @@ CREATE TABLE `article_kp` (
 -- Records of article_kp
 -- ----------------------------
 BEGIN;
-INSERT INTO `article_kp` VALUES (7, '狗狗：人类最忠实的朋友', '狗狗是人类最受欢迎的宠物之一，被誉为人类最忠实的朋友。它们以各种品种的形式存在，从小型狗到大型犬，从拥有长毛、短毛或无毛的外观，到拥有不同的颜色和花纹。\n\n狗狗是社交性动物，非常喜欢与家人互动和结交新朋友。它们可以成为温柔、忠诚和无条件爱的化身。并且，许多狗狗还能执行各种任务，例如导盲犬、搜救犬和警犬等。\n\n拥有狗狗需要投入时间和精力来满足它们的需求。定期的锻炼、散步和游戏可以保持它们健康和快乐。此外，提供适当的饮食、良好的卫生环境和定期的兽医检查对于维持狗狗的健康也至关重要。\n\n作为宠物主人，我们需要给予狗狗关爱、尊重和培养良好的行为习惯。通过训练和社交化，我们可以帮助它们成为社会上守法、友好和适应各种环境的成员。\n\n与狗狗相处将给我们带来许多快乐、温暖和无尽的爱。无论是健康时还是当它们需要特别关注和护理时，狗狗都会一直陪伴在我们身边。\n\n与狗狗的共处将极大地丰富我们的生活，让我们成为更好的人类。带给它们幸福，我们也将从中获得回报，一起度过美好的时光。', '2023-12-04 13:17:51', '/file/26ffa20a68bc42c4bb5bfc7dea74c8d0.jpg', 13);
+INSERT INTO `article_kp` VALUES (7, 'Dogs: Humanity’s Most Loyal Friends',
+'Dogs are one of the most popular pets among humans and are often celebrated as our most loyal friends. They come in a variety of breeds, from small to large, with appearances ranging from long-haired, short-haired, or even hairless, and with many different colors and patterns.',
+'2023-12-04 13:17:51', '/file/26ffa20a68bc42c4bb5bfc7dea74c8d0.jpg', 13);
 COMMIT;
+
 
 -- ----------------------------
 -- Table structure for comment
@@ -167,11 +172,11 @@ COMMIT;
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '回复内容',
-  `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '回复人',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '回复时间',
-  `pid` int DEFAULT NULL COMMENT '父id',
-  `article_id` int DEFAULT NULL COMMENT '文章id',
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'content',
+  `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'user',
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'time',
+  `pid` int DEFAULT NULL ,
+  `article_id` int DEFAULT NULL ,
   `type` int DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
@@ -180,8 +185,8 @@ CREATE TABLE `comment` (
 -- Records of comment
 -- ----------------------------
 BEGIN;
-INSERT INTO `comment` VALUES (9, '可爱', 'user', '2023-11-25 23:17:01', NULL, 8, 2);
-INSERT INTO `comment` VALUES (10, '挺好的', '管理员', '2024-01-09 18:34:12', NULL, 4, 1);
+INSERT INTO `comment` VALUES (9, 'cute', 'user', '2023-11-25 23:17:01', NULL, 8, 2);
+INSERT INTO `comment` VALUES (10, 'nice', 'admin', '2024-01-09 18:34:12', NULL, 4, 1);
 COMMIT;
 
 -- ----------------------------
@@ -190,9 +195,9 @@ COMMIT;
 DROP TABLE IF EXISTS `donate`;
 CREATE TABLE `donate` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '捐款人',
-  `goods` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '捐赠物资',
-  `time` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '捐款事件',
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `goods` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `time` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -200,7 +205,7 @@ CREATE TABLE `donate` (
 -- Records of donate
 -- ----------------------------
 BEGIN;
-INSERT INTO `donate` VALUES (1, '张三', '牛奶', '2023-11-25 22:56:46');
+INSERT INTO `donate` VALUES (1, 'Tom', 'milk', '2023-11-25 22:56:46');
 COMMIT;
 
 -- ----------------------------
@@ -209,11 +214,11 @@ COMMIT;
 DROP TABLE IF EXISTS `feed`;
 CREATE TABLE `feed` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '环境照片1',
-  `img2` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '环境照片2',
-  `img3` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '环境照片3',
-  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '地址',
-  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '相关描述',
+  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `img2` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `img3` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -221,7 +226,7 @@ CREATE TABLE `feed` (
 -- Records of feed
 -- ----------------------------
 BEGIN;
-INSERT INTO `feed` VALUES (1, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', '/file/9be7a2f2b42d4501a622b6b4cf4e0323.jpg', '/file/474325240ccf406da71e080cb804f6d0.jpg', '海淀区海南小区', '宠物喂养点');
+INSERT INTO `feed` VALUES (1, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', '/file/9be7a2f2b42d4501a622b6b4cf4e0323.jpg', '/file/474325240ccf406da71e080cb804f6d0.jpg', 'LA USA', 'feed spot');
 COMMIT;
 
 -- ----------------------------
@@ -230,13 +235,13 @@ COMMIT;
 DROP TABLE IF EXISTS `lost`;
 CREATE TABLE `lost` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '走失宠物名字',
-  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '种类',
-  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '性别',
-  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系人',
-  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系方式',
-  `status1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '已丢失/带领回',
-  `status2` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '找回状态',
+  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `sex` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `status1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `status2` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -244,8 +249,8 @@ CREATE TABLE `lost` (
 -- Records of lost
 -- ----------------------------
 BEGIN;
-INSERT INTO `lost` VALUES (1, '三毛', '狗', '公', '六六', '15877777777', '已丢失', '未找到');
-INSERT INTO `lost` VALUES (2, '小米', '猫', '母', '小明', '15877777777', '已丢失', '未找到');
+INSERT INTO `lost` VALUES (1, 'jiji', 'dog', 'male', 'sixi', '15877777777', 'lost', 'not found');
+INSERT INTO `lost` VALUES (2, 'mi', 'cat', 'female', 'ming', '15877777777', 'lost', 'not found');
 COMMIT;
 
 -- ----------------------------
@@ -254,9 +259,9 @@ COMMIT;
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '内容',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '时间',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `content` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -264,9 +269,17 @@ CREATE TABLE `notice` (
 -- Records of notice
 -- ----------------------------
 BEGIN;
-INSERT INTO `notice` VALUES (3, '给宠物爱好者的一段话', '亲爱的宠物爱好者们，感谢您一直以来对我们宠物管理系统的支持和关注！我们希望通过这个公告向您分享一些重要的信息。  首先，请注意，我们的宠物管理系统已经迎来了一批可爱的小动物等待被您带回家！无论您是寻找一只忠诚的狗狗、一只灵巧的猫咪，或是一只小鸟、小兔子等其他小伙伴，我们都会竭尽全力寻找最适合您的伴侣。每一只待领养的动物都经过详细的健康检查和心理评估，确保它们处于良好的状态。给他们一个温暖的家，也是给自己一份无尽的陪伴和快乐！', '2023-11-25 00:00:00');
-INSERT INTO `notice` VALUES (4, '关于领养宠物的寄语', '无论您是孤独需要陪伴，还是充满爱心想要帮助需要的小生命，我们都欢迎您加入我们的宠物领养大家庭！如果您对系统的使用、领养流程等有任何疑问或建议，请随时联系我们的客户服务团队，我们将竭诚为您提供帮助。  再次感谢您的支持与关注！让我们共同为保护和关爱每一只宠物共同努力！', '2023-11-25 00:00:00');
-INSERT INTO `notice` VALUES (5, '如果您想要为宠物捐赠物资', '如果您想要为流浪宠物们捐赠物资，请联系负责人: 张三，联系电话: 010-65998877。', NULL);
+INSERT INTO `notice` VALUES (3, 'A Message for Pet Lovers',
+'Dear pet lovers, thank you for your ongoing support and attention to our pet management system! Through this announcement, we want to share some important information with you.\n\nIf you are looking for a loyal dog, a graceful cat, or a small companion like a bird or a rabbit, we are here to help you find the perfect match.',
+'2023-11-25 00:00:00');
+
+INSERT INTO `notice` VALUES (4, 'Words on Adopting a Pet',
+'Whether you are seeking companionship or wanting to extend your love to a life in need, we welcome you to join our pet adoption family! If you have any questions or suggestions about using the system, the adoption process, or anything else, please feel free to reach out to our customer service team. We are here to help.\n\nThank you once again for your support and care! Let us work together to protect and cherish every pet!',
+'2023-11-25 00:00:00');
+
+INSERT INTO `notice` VALUES (5, 'If You Wish to Donate Supplies for Pets',
+'If you would like to donate supplies to stray pets, please contact the person in charge: Zhang San, contact number: 010-65998877.', NULL);
+
 COMMIT;
 
 -- ----------------------------
@@ -275,12 +288,12 @@ COMMIT;
 DROP TABLE IF EXISTS `rescue`;
 CREATE TABLE `rescue` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '名称',
-  `addres` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '地址',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '照片',
-  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系人',
-  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系方式',
-  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '相关描述',
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `addres` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -288,7 +301,7 @@ CREATE TABLE `rescue` (
 -- Records of rescue
 -- ----------------------------
 BEGIN;
-INSERT INTO `rescue` VALUES (1, '救助1号', '北京市海淀区宠物救助中心', '/file/6f31365a6b7d4b54a7191070671540b0.jpg', '王五', '15877777777', '中心救助站');
+INSERT INTO `rescue` VALUES (1, '1', 'pet help center', '/file/6f31365a6b7d4b54a7191070671540b0.jpg', 'wuwu', '15877777777', 'help center');
 COMMIT;
 
 -- ----------------------------
@@ -297,13 +310,13 @@ COMMIT;
 DROP TABLE IF EXISTS `salvation`;
 CREATE TABLE `salvation` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '情况描述',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '现场照片',
-  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '地点',
-  `time` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '发现时间',
-  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系人',
-  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系方式',
-  `state` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT '未解决' COMMENT '解决状态',
+  `information` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `time` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `state` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT 'unsolved' ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -311,8 +324,8 @@ CREATE TABLE `salvation` (
 -- Records of salvation
 -- ----------------------------
 BEGIN;
-INSERT INTO `salvation` VALUES (1, '发现一只疑似走丢的家猫', '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', '海淀区人民广场', '2023-11-25 22:50:28', '张三', '15977777777', '未解决');
-INSERT INTO `salvation` VALUES (2, '野外小狗无主人', '/file/a1b72fa413254627b8b5a4be39a1989b.png', '海淀区博物馆', '2023-11-25 22:50:58', '李四', '13088888888', '未解决');
+INSERT INTO `salvation` VALUES (1, 'A suspected lost house cat found', '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', 'People’s Square, Haidian District', '2023-11-25 22:50:28', 'Zhang San', '15977777777', 'Unresolved');
+INSERT INTO `salvation` VALUES (2, 'A stray puppy found in the wild', '/file/a1b72fa413254627b8b5a4be39a1989b.png', 'Museum, Haidian District', '2023-11-25 22:50:58', 'Li Si', '13088888888', 'Unresolved');
 COMMIT;
 
 -- ----------------------------
@@ -320,12 +333,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sterilization`;
 CREATE TABLE `sterilization` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `animal_id` int DEFAULT NULL COMMENT '流浪动物id',
-  `catch1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '捕捉状态',
-  `sterilization` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '绝育状态',
-  `release1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '放生状态',
-  `vaccine` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '疫苗状态',
+  `id` int NOT NULL AUTO_INCREMENT ,
+  `animal_id` int DEFAULT NULL ,
+  `catch1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `sterilization` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `release1` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
+  `vaccine` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL ,
   `animal_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
@@ -334,7 +347,7 @@ CREATE TABLE `sterilization` (
 -- Records of sterilization
 -- ----------------------------
 BEGIN;
-INSERT INTO `sterilization` VALUES (2, 1, '已捕捉', '是', '未放生', '已接种', '小猫咪');
+INSERT INTO `sterilization` VALUES (2, 1, 'captured', 'yes', 'not released', 'vaccined', 'kitten');
 COMMIT;
 
 -- ----------------------------
@@ -342,9 +355,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict`;
 CREATE TABLE `sys_dict` (
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
-  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '内容',
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '类型'
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
@@ -380,13 +393,13 @@ COMMIT;
 DROP TABLE IF EXISTS `sys_file`;
 CREATE TABLE `sys_file` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文件名称',
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文件类型',
-  `size` bigint DEFAULT NULL COMMENT '文件大小(kb)',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下载链接',
-  `md5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文件md5',
-  `is_delete` tinyint(1) DEFAULT '0' COMMENT '是否删除',
-  `enable` tinyint(1) DEFAULT '1' COMMENT '是否禁用链接',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `size` bigint DEFAULT NULL ,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `md5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `is_delete` tinyint(1) DEFAULT '0' ,
+  `enable` tinyint(1) DEFAULT '1' ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -414,19 +427,19 @@ INSERT INTO `sys_file` VALUES (106, '01.jpg', 'jpg', 574, '/file/dd2cfa5daa7a4ca
 INSERT INTO `sys_file` VALUES (107, '01.jpg', 'jpg', 146, '/file/a0455b12998a4d32b280e5f5542bbcc6.jpg', '5c072037e4e9662831fe448e28795770', 0, 1);
 INSERT INTO `sys_file` VALUES (108, '01.jpg', 'jpg', 146, '/file/a0455b12998a4d32b280e5f5542bbcc6.jpg', '5c072037e4e9662831fe448e28795770', 0, 1);
 INSERT INTO `sys_file` VALUES (109, '01.jpg', 'jpg', 146, '/file/a0455b12998a4d32b280e5f5542bbcc6.jpg', '5c072037e4e9662831fe448e28795770', 0, 1);
-INSERT INTO `sys_file` VALUES (110, '音乐.jpg', 'jpg', 816, '/file/76722e96859c4f3e843e506598acf65c.jpg', '8b9faeb1e1ef2eb8878ee78319fbfd91', 0, 1);
-INSERT INTO `sys_file` VALUES (111, '社团.jpg', 'jpg', 686, '/file/44b86dcc15e84babb2e949ccb54af193.jpg', '6625230db6cbed9e87ce5f142cce5fe9', 0, 1);
-INSERT INTO `sys_file` VALUES (112, '考试.jpg', 'jpg', 488, '/file/4df52f51f9dc42179181d6ce2d5f312c.jpg', '5ebe9b4337ca94be4055ae2b353325fa', 0, 1);
-INSERT INTO `sys_file` VALUES (113, '二手交易市场.png', 'png', 2380, '/file/933d720ff1a34d338f1129a51554337c.png', '9aa1b9cc10f315681203f99791651c74', 0, 1);
-INSERT INTO `sys_file` VALUES (114, '图书馆.png', 'png', 2085, '/file/a1b72fa413254627b8b5a4be39a1989b.png', '142fba75fb510a7451dbfd405d64d10b', 0, 1);
-INSERT INTO `sys_file` VALUES (115, '学校宿舍.png', 'png', 1543, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', 'd7162ad518d2e42f27300595b8593c36', 0, 1);
-INSERT INTO `sys_file` VALUES (116, '学校宿舍.png', 'png', 1543, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', 'd7162ad518d2e42f27300595b8593c36', 0, 1);
-INSERT INTO `sys_file` VALUES (117, '商场(1).jpg', 'jpg', 396, '/file/c87079e161fe4d3c8756a8188207ba0a.jpg', 'b39e93876e5e2e2de9e232956c3df4f9', 0, 1);
-INSERT INTO `sys_file` VALUES (118, '医院.jpg', 'jpg', 375, '/file/474325240ccf406da71e080cb804f6d0.jpg', '05230c5681a85c4252f8b002d12772bc', 0, 1);
-INSERT INTO `sys_file` VALUES (119, '商场.jpg', 'jpg', 421, '/file/9be7a2f2b42d4501a622b6b4cf4e0323.jpg', 'af3e3d03dae1f1cc76511b64b8913a2b', 0, 1);
-INSERT INTO `sys_file` VALUES (120, '电影.jpg', 'jpg', 194, '/file/6f31365a6b7d4b54a7191070671540b0.jpg', 'ace809e49a65a46e4de8115538a77724', 0, 1);
-INSERT INTO `sys_file` VALUES (121, '个人博客.jpg', 'jpg', 409, '/file/26ffa20a68bc42c4bb5bfc7dea74c8d0.jpg', '9e9b0c1507cec6752e905c6394917fdf', 0, 1);
-INSERT INTO `sys_file` VALUES (122, '停车场.jpg', 'jpg', 859, '/file/8efa20e95cbe40c59ec804531a21ebc5.jpg', 'cba1f42ea01b2b71f44c9d76e8ccc2b5', 0, 1);
+INSERT INTO `sys_file` VALUES (110, 'Music.jpg', 'jpg', 816, '/file/76722e96859c4f3e843e506598acf65c.jpg', '8b9faeb1e1ef2eb8878ee78319fbfd91', 0, 1);
+INSERT INTO `sys_file` VALUES (111, 'Community.jpg', 'jpg', 686, '/file/44b86dcc15e84babb2e949ccb54af193.jpg', '6625230db6cbed9e87ce5f142cce5fe9', 0, 1);
+INSERT INTO `sys_file` VALUES (112, 'Exam.jpg', 'jpg', 488, '/file/4df52f51f9dc42179181d6ce2d5f312c.jpg', '5ebe9b4337ca94be4055ae2b353325fa', 0, 1);
+INSERT INTO `sys_file` VALUES (113, 'Secondhand Market.png', 'png', 2380, '/file/933d720ff1a34d338f1129a51554337c.png', '9aa1b9cc10f315681203f99791651c74', 0, 1);
+INSERT INTO `sys_file` VALUES (114, 'Library.png', 'png', 2085, '/file/a1b72fa413254627b8b5a4be39a1989b.png', '142fba75fb510a7451dbfd405d64d10b', 0, 1);
+INSERT INTO `sys_file` VALUES (115, 'School Dormitory.png', 'png', 1543, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', 'd7162ad518d2e42f27300595b8593c36', 0, 1);
+INSERT INTO `sys_file` VALUES (116, 'School Dormitory.png', 'png', 1543, '/file/85875c69618f4c24ae6ac709ee8ed7ed.png', 'd7162ad518d2e42f27300595b8593c36', 0, 1);
+INSERT INTO `sys_file` VALUES (117, 'Mall (1).jpg', 'jpg', 396, '/file/c87079e161fe4d3c8756a8188207ba0a.jpg', 'b39e93876e5e2e2de9e232956c3df4f9', 0, 1);
+INSERT INTO `sys_file` VALUES (118, 'Hospital.jpg', 'jpg', 375, '/file/474325240ccf406da71e080cb804f6d0.jpg', '05230c5681a85c4252f8b002d12772bc', 0, 1);
+INSERT INTO `sys_file` VALUES (119, 'Mall.jpg', 'jpg', 421, '/file/9be7a2f2b42d4501a622b6b4cf4e0323.jpg', 'af3e3d03dae1f1cc76511b64b8913a2b', 0, 1);
+INSERT INTO `sys_file` VALUES (120, 'Movie.jpg', 'jpg', 194, '/file/6f31365a6b7d4b54a7191070671540b0.jpg', 'ace809e49a65a46e4de8115538a77724', 0, 1);
+INSERT INTO `sys_file` VALUES (121, 'Personal Blog.jpg', 'jpg', 409, '/file/26ffa20a68bc42c4bb5bfc7dea74c8d0.jpg', '9e9b0c1507cec6752e905c6394917fdf', 0, 1);
+INSERT INTO `sys_file` VALUES (122, 'Parking Lot.jpg', 'jpg', 859, '/file/8efa20e95cbe40c59ec804531a21ebc5.jpg', 'cba1f42ea01b2b71f44c9d76e8ccc2b5', 0, 1);
 INSERT INTO `sys_file` VALUES (123, '2.png', 'png', 33, '/file/ff35233e8e244a3e8c28a5031b1364d1.png', '356dce87fd32545dd8e929eb9b069308', 0, 1);
 INSERT INTO `sys_file` VALUES (124, '1.png', 'png', 47, '/file/36112d2125d5478cb956385e44d86640.png', 'b8b1242cb02994c3a6e4cd39fd11e8e2', 0, 1);
 COMMIT;
@@ -437,13 +450,13 @@ COMMIT;
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路径',
-  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '图标',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
-  `pid` int DEFAULT NULL COMMENT '父级id',
-  `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '页面路径',
-  `sort_num` int DEFAULT NULL COMMENT '排序',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `pid` int DEFAULT NULL ,
+  `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `sort_num` int DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -451,27 +464,27 @@ CREATE TABLE `sys_menu` (
 -- Records of sys_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_menu` VALUES (4, '系统管理', NULL, 'iconfont icon-r-setting', NULL, NULL, NULL, 300);
-INSERT INTO `sys_menu` VALUES (5, '用户管理', '/user', 'iconfont icon-r-user2', NULL, 4, 'User', 301);
-INSERT INTO `sys_menu` VALUES (6, '角色管理', '/role', 'iconfont icon-r-user3', NULL, 4, 'Role', 302);
-INSERT INTO `sys_menu` VALUES (7, '菜单管理', '/menu', 'iconfont icon-r-setting', NULL, 4, 'Menu', 303);
-INSERT INTO `sys_menu` VALUES (8, '文件管理', '/file', 'iconfont icon-r-paper', NULL, 4, 'File', 304);
-INSERT INTO `sys_menu` VALUES (10, '主页', '/home', 'iconfont icon-r-home', NULL, NULL, 'Home', 0);
-INSERT INTO `sys_menu` VALUES (11, '流浪动物管理', '/animal', 'iconfont icon-r-love', NULL, 25, 'Animal', 401);
-INSERT INTO `sys_menu` VALUES (12, '宠物绝育管理', '/sterilization', 'iconfont icon-r-refresh', NULL, 25, 'Sterilization', 402);
-INSERT INTO `sys_menu` VALUES (13, '申请领养管理', '/applcation', 'iconfont icon-r-add', NULL, 25, 'Applcation', 407);
-INSERT INTO `sys_menu` VALUES (14, '评论管理', '/comment', 'iconfont icon-r-team', NULL, 26, 'Comment', 501);
-INSERT INTO `sys_menu` VALUES (15, '流浪动物救助', '/salvation', 'iconfont icon-r-love', NULL, 25, 'Salvation', 403);
-INSERT INTO `sys_menu` VALUES (16, '喂养点管理', '/feed', 'iconfont icon-r-building', NULL, 25, 'Feed', 405);
-INSERT INTO `sys_menu` VALUES (18, '宠物走失管理', '/lost', 'iconfont icon-r-no', NULL, 25, 'Lost', 404);
-INSERT INTO `sys_menu` VALUES (19, '救助站管理', '/rescue', 'iconfont icon-r-building', NULL, 25, 'Rescue', 406);
-INSERT INTO `sys_menu` VALUES (20, '帖子管理', '/article', 'iconfont icon-r-edit', NULL, 26, 'Article', 502);
-INSERT INTO `sys_menu` VALUES (21, '捐赠管理', '/donate', 'iconfont icon-r-yes', NULL, 26, 'Donate', 503);
-INSERT INTO `sys_menu` VALUES (22, '公告管理', '/notice', 'iconfont icon-r-edit', NULL, 4, 'Notice', 305);
-INSERT INTO `sys_menu` VALUES (23, '科普文章管理', '/articleKp', 'iconfont icon-r-edit', NULL, 26, 'ArticleKp', 504);
-INSERT INTO `sys_menu` VALUES (24, '活动管理', '/activity', 'iconfont icon-r-mark1', NULL, 26, 'Activity', 505);
-INSERT INTO `sys_menu` VALUES (25, '宠物管理', NULL, 'iconfont icon-r-love', NULL, NULL, NULL, 400);
-INSERT INTO `sys_menu` VALUES (26, '其他管理', NULL, 'iconfont icon-r-list', NULL, NULL, NULL, 500);
+INSERT INTO `sys_menu` VALUES (4, 'System Management', NULL, 'iconfont icon-r-setting', NULL, NULL, NULL, 300);
+INSERT INTO `sys_menu` VALUES (5, 'User Management', '/user', 'iconfont icon-r-user2', NULL, 4, 'User', 301);
+INSERT INTO `sys_menu` VALUES (6, 'Role Management', '/role', 'iconfont icon-r-user3', NULL, 4, 'Role', 302);
+INSERT INTO `sys_menu` VALUES (7, 'Menu Management', '/menu', 'iconfont icon-r-setting', NULL, 4, 'Menu', 303);
+INSERT INTO `sys_menu` VALUES (8, 'File Management', '/file', 'iconfont icon-r-paper', NULL, 4, 'File', 304);
+INSERT INTO `sys_menu` VALUES (10, 'Home', '/home', 'iconfont icon-r-home', NULL, NULL, 'Home', 0);
+INSERT INTO `sys_menu` VALUES (11, 'Stray Animal Management', '/animal', 'iconfont icon-r-love', NULL, 25, 'Animal', 401);
+INSERT INTO `sys_menu` VALUES (12, 'Pet Sterilization Management', '/sterilization', 'iconfont icon-r-refresh', NULL, 25, 'Sterilization', 402);
+INSERT INTO `sys_menu` VALUES (13, 'Adoption Application Management', '/applcation', 'iconfont icon-r-add', NULL, 25, 'Application', 407);
+INSERT INTO `sys_menu` VALUES (14, 'Comment Management', '/comment', 'iconfont icon-r-team', NULL, 26, 'Comment', 501);
+INSERT INTO `sys_menu` VALUES (15, 'Stray Animal Rescue', '/salvation', 'iconfont icon-r-love', NULL, 25, 'Salvation', 403);
+INSERT INTO `sys_menu` VALUES (16, 'Feeding Point Management', '/feed', 'iconfont icon-r-building', NULL, 25, 'Feed', 405);
+INSERT INTO `sys_menu` VALUES (18, 'Lost Pet Management', '/lost', 'iconfont icon-r-no', NULL, 25, 'Lost', 404);
+INSERT INTO `sys_menu` VALUES (19, 'Rescue Center Management', '/rescue', 'iconfont icon-r-building', NULL, 25, 'Rescue', 406);
+INSERT INTO `sys_menu` VALUES (20, 'Post Management', '/article', 'iconfont icon-r-edit', NULL, 26, 'Article', 502);
+INSERT INTO `sys_menu` VALUES (21, 'Donation Management', '/donate', 'iconfont icon-r-yes', NULL, 26, 'Donate', 503);
+INSERT INTO `sys_menu` VALUES (22, 'Notice Management', '/notice', 'iconfont icon-r-edit', NULL, 4, 'Notice', 305);
+INSERT INTO `sys_menu` VALUES (23, 'Popular Science Article Management', '/articleKp', 'iconfont icon-r-edit', NULL, 26, 'ArticleKp', 504);
+INSERT INTO `sys_menu` VALUES (24, 'Event Management', '/activity', 'iconfont icon-r-mark1', NULL, 26, 'Activity', 505);
+INSERT INTO `sys_menu` VALUES (25, 'Pet Management', NULL, 'iconfont icon-r-love', NULL, NULL, NULL, 400);
+INSERT INTO `sys_menu` VALUES (26, 'Other Management', NULL, 'iconfont icon-r-list', NULL, NULL, NULL, 500);
 COMMIT;
 
 -- ----------------------------
@@ -480,9 +493,9 @@ COMMIT;
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
-  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '唯一标识',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -490,8 +503,8 @@ CREATE TABLE `sys_role` (
 -- Records of sys_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role` VALUES (1, '管理员', '管理员', 'ROLE_ADMIN');
-INSERT INTO `sys_role` VALUES (2, '普通用户', '普通用户', 'ROLE_USER');
+INSERT INTO `sys_role` VALUES (1, 'admin', 'admin', 'ROLE_ADMIN');
+INSERT INTO `sys_role` VALUES (2, 'user', 'user', 'ROLE_USER');
 COMMIT;
 
 -- ----------------------------
@@ -499,10 +512,10 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu` (
-  `role_id` int NOT NULL COMMENT '角色id',
-  `menu_id` int NOT NULL COMMENT '菜单id',
+  `role_id` int NOT NULL,
+  `menu_id` int NOT NULL ,
   PRIMARY KEY (`role_id`,`menu_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单关系表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -540,17 +553,17 @@ COMMIT;
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户名',
-  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '密码',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '昵称',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '邮箱',
-  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '电话',
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地址',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `avatar_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '头像',
-  `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '角色',
-  `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '性别',
-  `birth` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出生年月',
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ,
+  `avatar_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
+  `birth` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
@@ -558,8 +571,8 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, 'admin', '123456', '管理员', '123@qq.com', '18677888888', '杭州市余杭区xxx街道', '2023-06-22 21:10:27', '/file/ff35233e8e244a3e8c28a5031b1364d1.png', 'ROLE_ADMIN', '男', '1999-07-01');
-INSERT INTO `sys_user` VALUES (4, 'user', '123456', '杭州水果捞', '155@qq.com', '18677777777', '杭州市余杭区xxx街道', '2023-11-25 22:31:12', '/file/36112d2125d5478cb956385e44d86640.png', 'ROLE_USER', '男', '2023-11-25');
+INSERT INTO `sys_user` VALUES (1, 'admin', '123456', 'admin', '123@qq.com', '18677888888', 'LA', '2023-06-22 21:10:27', '/file/ff35233e8e244a3e8c28a5031b1364d1.png', 'ROLE_ADMIN', 'male', '1999-07-01');
+INSERT INTO `sys_user` VALUES (4, 'user', '123456', 'eta', '155@qq.com', '18677777777', 'Boston', '2023-11-25 22:31:12', '/file/36112d2125d5478cb956385e44d86640.png', 'ROLE_USER', 'male', '2023-11-25');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
